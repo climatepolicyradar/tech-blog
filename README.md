@@ -32,5 +32,9 @@ We believe in transparent, collaborative development. We talk about what we’re
 
 # Publishing 
 
-- Markdown files stored in the `posts` directory are automatically published to the blog when merged to main. 
+- Markdown files stored in the `site/_posts` directory are automatically published to the blog when merged to `gh-pages` branch. 
 - The ADR setting out the decision on publishing and hosting is here [TODO: add link]
+
+
+# Local development
+If you want to work on the blog itself, you can do so locally. The instructions for setup were taken from [these github pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
