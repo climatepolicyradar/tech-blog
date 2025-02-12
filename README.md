@@ -32,7 +32,7 @@ We believe in transparent, collaborative development. We talk about what we’re
 
 # Publishing 
 
-- Markdown files stored in the `site/_posts` directory are automatically published to the blog when merged to `gh-pages` branch. 
+- Markdown files stored in the `docs/_posts` directory are automatically published to the blog when merged to `gh-pages` branch. 
 - The ADR setting out the decision on publishing and hosting is here [TODO: add link]
 
 
