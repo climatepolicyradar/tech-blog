@@ -5,7 +5,7 @@ date:   2025-02-12 09:07:33 +0000
 categories: data-science
 ---
 
-Our [main blog](https://www.climatepolicyradar.org/latest) features Anne Sietsma's exploration of how we can analyse and visualise language patterns in climate policy documents across different regions and contexts.
+Our [main blog](https://www.climatepolicyradar.org/latest) features Anne Sietsma's exploration of [how we can analyse and visualise language patterns in climate policy](https://www.climatepolicyradar.org/latest/mapping-language-part-one) documents across different regions and contexts.
 
 > Making climate policy easy to find and use is especially important for communities that are most vulnerable to climate change. Finding climate policies relevant to these communities is not a simple task. The Climate Policy Radar app has already collected the policies and extracted their text, so selecting text based on keywords is an obvious first step but language is often very context-dependent.
  
