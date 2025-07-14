@@ -1,6 +1,8 @@
 ---
 layout: post
-title:  "How we’re using Prefect to develop our Platform-as-a-service"
+title:  "How we’re using Prefect to develop our Platform-as-a-Service"
+description: "Our platform team is building a self-service data platform, and a huge part of that is orchestrating the flows of data from PDF to knowledge graph. We're using Prefect to do this."
+author: "Mark Cottam, Henry Franks"
 date:   2025-07-14 12:00:00 +0000
 categories: platform
 ---
@@ -19,7 +21,7 @@ Our first task was to make the raw text in PDFs searchable, but even that is cha
 
 The challenge of this isn't just technical complexity, but human complexity. Before dedicating a team to building out our platform, our data scientists were frustrated waiting for infrastructure support, platform engineers spent more time handling requests than building the platform, and teams were building workarounds to avoid the bottlenecks.
 
-## The Solution: Platform as a service
+## The Solution: Platform as a Service
 
 Our platform team's aim is to build a full platform-as-a-service capability, allowing engineers and data scientists to deploy and manage their own production processes without needing a platform engineer every time. This decouples teams, allowing us to work on distinct capabilities independently. A cornerstone of this transformation has been our orchestration tool, Prefect. Not because it's perfect (we have plenty of complaints about their licensing model), but because it provides huge benefits for our architectural needs.
 
