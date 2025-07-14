@@ -31,7 +31,7 @@ This separation is crucial for a scaling startup like ours -- helping teams to f
 
 ## The technical bit
 
-Architecturally, we have the platform layer, managed by the platform team. Pulumi infrastructure as code defines our base Prefect deployment, IAM roles, task definitions — including using Prefect’s Python SDK to define our our base Prefect deployment for things like work pools, work queues and job variables —- and our underlying AWS resources like IAM roles, task definitions and secret.. We've chosen to use Prefect's managed cloud service, but it's open source so you have the option to self-host. As a small team, we prefer to not add more maintenance and operational burden for ourselves!
+Architecturally, we have the platform layer, managed by the platform team. Pulumi infrastructure as code defines our base Prefect deployment, IAM roles, task definitions — including using Prefect’s Python SDK to define our our base Prefect deployment for things like work pools, work queues and job variables —- and our underlying AWS resources like IAM roles, task definitions and secrets management. We've chosen to use Prefect's managed cloud service, but it's open source so you have the option to self-host. As a small team, we prefer to not add more maintenance and operational burden for ourselves!
 
 We're almost solely in AWS, so ECS is an easy choice for our compute layer. We use AWS Secrets Manager over Prefect's secrets blocks so our secrets stay in one place and can be easily ring-fenced to each environment we operate. Similarly this allows the platform team to manage the permissions and role for ECS jobs (e.g. which assets they have access to) centrally. For CI/CD we use Github actions, following well established patterns within our engineering organisation.
 
@@ -39,11 +39,11 @@ Our two main pipelines underpin our entire application layer:
 
 ![Our ingestion pipeline](/tech-blog/assets/blog-images/prefect-pipeline-1.png)
 
-**Ingestion Pipeline**: Downloads documents (typically PDFs, though we convert HTML to PDF to maintain one text extraction path) → translates if needed via Google Translate → extracts text with Microsoft DocumentAI (we tested many options; they handle weird PDFs best) → embeds and inserts into our Vespa search index.
+**Ingestion Pipeline**: Downloads documents (typically PDFs, though we convert HTML to PDF to maintain one text extraction path) → extracts text with Microsoft DocumentAI (we tested many options; they handle weird PDFs best) → translates if needed via Google Translate → embeds and inserts into our Vespa search index.
 
 ![Our knowledge graph pipeline](/tech-blog/assets/blog-images/prefect-pipeline-2.png)
 
-**Knowledge Graph Pipeline**: Runs classifier inference on document batches → indexes labels → derives aggregate concept counts. No point doing this online when batch processing works perfectly.
+**Knowledge Graph Pipeline**: Runs classifier inference on document batches → derives aggregate concept counts → indexes labels . No point doing this online when batch processing works perfectly.
 
 Some topics yield to straightforward lexical analysis (think of a search engine that simultaneously searches for every possible name something is called), while linguistically complex concepts like net-zero targets demand trained classifiers. We've prioritised simplicity first (building complexity incrementally is one of our architectural principles), reaching for more intense techniques only when the topic demanded it. This has meant we can run the entire pipeline -- except, currently, for a single classifier -- without GPU acceleration, saving significantly on cost.
 
