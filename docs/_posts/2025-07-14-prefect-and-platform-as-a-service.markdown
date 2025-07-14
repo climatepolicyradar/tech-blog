@@ -35,11 +35,11 @@ We're almost solely in AWS, so ECS is an easy choice for our compute layer. We u
 
 Our two main pipelines underpin our entire application layer:
 
-![Our ingestion pipeline](assets/blog-images/prefect-pipeline-1.png)
+![Our ingestion pipeline](/tech-blog/assets/blog-images/prefect-pipeline-1.png)
 
 **Ingestion Pipeline**: Downloads documents (typically PDFs, though we convert HTML to PDF to maintain one text extraction path) → translates if needed via Google Translate → extracts text with Microsoft DocumentAI (we tested many options; they handle weird PDFs best) → embeds and inserts into our Vespa search index.
 
-![Our knowledge graph pipeline](assets/blog-images/prefect-pipeline-2.png)
+![Our knowledge graph pipeline](/tech-blog/assets/blog-images/prefect-pipeline-2.png)
 
 **Knowledge Graph Pipeline**: Runs classifier inference on document batches → indexes labels → derives aggregate concept counts. No point doing this online when batch processing works perfectly.
 
