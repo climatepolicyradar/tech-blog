@@ -14,7 +14,7 @@ We maintain a knowledge graph of climate-related topics that are valuable for ou
 
 <TODO: screenshot of topic filters goes here>
 
-We currently have 1,561 topics in the knowledge graph, 100 of which are powered by their own single-class classifier. All but one of these classifiers so far work without any machine learning – they compile all of the labels from a concept in our concept store into a regex pattern, and we use that regex pattern as the 'classifier'.
+We currently have 1,561 topics in the knowledge graph, 100 of which are powered by their own single-class classifier. All but one of these classifiers so far work without any machine learning – they compile all of the labels (the "main" label, alternative labels and [negative labels](https://climatepolicyradar.wikibase.cloud/wiki/Property:P9)) from a concept in our concept store into a regex pattern, and we use that regex pattern as the 'classifier'.
 
 The one classifier that does use machine learning is our targets classifier. As the task of identifying whether a passage mentions a target is too complex to be handled by a regex pattern, we built this by finetuning a BERT model [^1]. This took us months and required thousands of expert-labelled passages and iteration on our methodology. For our small team, it's infeasible to do this for each classifier we develop – so we needed another way to develop classifiers for harder concepts.
 
@@ -35,7 +35,7 @@ Internally, we've been working on ways to adapt [active learning](https://en.wik
 
 We followed a relatively simple process to get this done, whilst building out the ability to track experiments in Weights & Biases as we went. As shown in the diagram, the process neatly split into enabling each team to focus on their area of expertise. Folks from our policy team ([Anne](https://www.linkedin.com/in/ajsietsma/) and [Siôn](https://www.linkedin.com/in/sioneliswilliams/details/experience/)) applied their domain knowledge to iterate on annotation guidelines, produce a validation set, and create a classifier with an 85% F1 score. I ([Kalyan]) then produced 5.5k training examples using this LLM, and finetuned a BERT model with those.
 
-![BERT distillation process](/assets/2026-01-00-finance-flows/distillation_diagram.png)
+![BERT distillation process](assets/2026-01-00-finance-flows/distillation_diagram.png)
 
 *The process of creating an LLM classifier, and distilling it to a BERT model*
 
