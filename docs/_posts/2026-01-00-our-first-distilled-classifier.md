@@ -51,7 +51,7 @@ Despite being smaller by roughly four orders of magnitude smaller, the **BERT mo
 
 ## Lessons learned
 
-We wanted to write about this work because there were a few surprises along the way that we're taking forward to future projects, and seemed valuable to share. The recommendations we'd give if you're attempting similar work are:
+We'd like to share some recommendations for those attempting similar work, based on some surprises we encountered along the way:```
 
 - **Iterate on a small model, test on a larger model from the same family**. We found that prompts that worked well on say GPT-4o also worked well on GPT-5, so we saved money and energy iterating on the smaller model. We've carried this forward into experiments with Claude and Gemini since, and also found that classifier failure modes can vary quite wildly between model families.
 - **Prompting classifiers enables domain experts to create amazing models**. Making state-of-the-art classifiers used to be a somewhat vibe-based art of steering the semantic content of a training dataset, and then finding ways to spot errors in the labels or annotation guidelines when the dataset reached a certain size. With the appropriate infrastructure and some early guidance, it seems like classifier development can be left in the hands of domain experts.
