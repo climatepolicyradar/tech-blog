@@ -14,15 +14,15 @@ We maintain a knowledge graph of climate-related topics that are valuable for ou
 
 <TODO: screenshot of topic filters goes here>
 
-We currently have 1,561 topics in the knowledge graph, 100 of which are powered by their own single-class classifier. All but one of these classifiers so far work without any machine learning – they compile all of the labels (the "main" label, alternative labels and [negative labels](https://climatepolicyradar.wikibase.cloud/wiki/Property:P9)) from a concept in our concept store into a regex pattern, and we use that regex pattern as the 'classifier'.
+We currently have 1,561 topics in the knowledge graph, 100 of which are powered by their own single-class classifier. All but one of these classifiers so far work without any machine learning[^2] – they compile all of the labels (the "main" label, alternative labels and [negative labels](https://climatepolicyradar.wikibase.cloud/wiki/Property:P9)) from a concept in our concept store into a regex pattern, and we use that regex pattern as the 'classifier'.
 
-The one classifier that does use machine learning is our targets classifier. As the task of identifying whether a passage mentions a target is too complex to be handled by a regex pattern, we built this by finetuning a BERT model [^1]. This took us months and required thousands of expert-labelled passages and iteration on our methodology. For our small team, it's infeasible to do this for each classifier we develop – so we needed another way to develop classifiers for harder concepts.
+The one classifier that does use machine learning is our [(policy) targets](https://climatepolicyradar.wikibase.cloud/wiki/Item:Q1651) classifier. As the task of identifying whether a passage mentions a target is too complex to be handled by a regex pattern, we built this by finetuning a BERT model [^1]. This took us months and required thousands of expert-labelled passages and iteration on our methodology. For our small team, it's infeasible to do this for each classifier we develop – so we needed another way to develop classifiers for harder concepts.
 
 ## Finance flow: a high impact but challenging topic to classify
 
 Identifying the transfer of finance is a high impact topic for us, especially as we host [a platform containing all of the project documents and policies from the Multilateral Climate Funds](https://climateprojectexplorer.org/).
 
-The definition from our concept store[^2] illustrates this:
+The definition from our concept store[^3] illustrates this:
 
 > A finance flow is an economic flow that reflects the creation, transformation, exchange, transfer, or extinction of economic value and involves changes in ownership of goods and/or financial assets, the provision of services, or the provision of labor and capital. Ideally, a financial flow describes four elements: the source (who is sending the financial asset, such as a bank or organisation); the financial instrument or mechanism (how it is being sent, such as a grant, loan or a subsidy); the use or destination (the purpose for which the asset will be used, which is often expressed as the recipient organisation or their sectoral categorisation); and the value (which can, but does not need to be, expressed in monetary terms directly).
 > *[finance flow (Q1829) – Climate Policy Radar concept store](https://climatepolicyradar.wikibase.cloud/wiki/Item:Q1829)*
@@ -39,7 +39,7 @@ We followed a relatively simple process to get this done, whilst building out th
 
 *The process of creating an LLM classifier, and distilling it to a BERT model*
 
-Despite being smaller by a factor of tens of thousands, the **BERT model was competitive with GPT-5** in F1 score. After choosing a threshold which optimised BERT's F1-score, we shifted the precision-recall tradeoff slightly in favour of greater precision.
+Despite being smaller by roughly four orders of magnitude smaller, the **BERT model was competitive with GPT-5** in F1 score. After choosing a threshold which optimised BERT's F1-score, we shifted the precision-recall tradeoff slightly in favour of greater precision.
 
 | Classifier Type | Precision | Recall | F1 | Support |
 | ----------------------- | --------- | ------ | ------ | --------- |
@@ -65,4 +65,6 @@ We're currently building classifiers for our [climate justice](https://climatepo
 
 [^1]: [Identifying Climate Targets in National Laws and Policies using Machine Learning](https://www.climatechange.ai/papers/iclr2024/26) (Juhasz et al., ICLR 2024)
 
-[^2]: We store all of our concepts in a Wikibase instance we call our [Concept Store](https://climatepolicyradar.wikibase.cloud/wiki/Main_Page). Our Head of Data Science [Harrison](https://www.linkedin.com/in/harrison-pim/) wrote about why we need one on [Climate Policy Radar's blog](https://www.climatepolicyradar.org/latest/a-problem-with-language-why-we-need-a-climate-concept-store).
+[^2]: As a data science team, we always take the approach of building the simplest, lowest-cost system (or 'smallest model') that meets the performance requirement. More maintainable, steerable and cost-efficient keyword classifiers give us much more control over examining and correcting biases than finetuned BERT models would.
+
+[^3]: We store all of our concepts in a Wikibase instance we call our [Concept Store](https://climatepolicyradar.wikibase.cloud/wiki/Main_Page). Our Head of Data Science [Harrison](https://www.linkedin.com/in/harrison-pim/) wrote about why we need one on [Climate Policy Radar's blog](https://www.climatepolicyradar.org/latest/a-problem-with-language-why-we-need-a-climate-concept-store).
