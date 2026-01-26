@@ -20,7 +20,7 @@ The one classifier that does use machine learning is our [(policy) targets](http
 
 ## Finance flow: a high impact but challenging topic to classify
 
-Identifying the transfer of finance is a high impact topic for us, especially as we host [a platform containing all of the project documents and policies from the Multilateral Climate Funds](https://climateprojectexplorer.org/).
+Identifying the transfer of economic value is a high impact topic for us, especially as we host [a platform containing all of the project documents and policies from the Multilateral Climate Funds](https://climateprojectexplorer.org/).
 
 The definition from our concept store[^3] illustrates this:
 
@@ -39,7 +39,7 @@ We followed a relatively simple process to get this done, whilst building out th
 
 *The process of creating an LLM classifier, and distilling it to a BERT model*
 
-Despite being smaller by roughly four orders of magnitude smaller, the **BERT model was competitive with GPT-5** in F1 score. After choosing a threshold which optimised BERT's F1-score, we shifted the precision-recall tradeoff slightly in favour of greater precision.
+Despite being smaller by roughly four orders of magnitude smaller, the **BERT model was competitive with GPT-5** in F1 score. After choosing a threshold which optimised BERT's F1-score, we shifted the precision-recall tradeoff slightly in favour of greater precision[^4].
 
 | Classifier Type | Precision | Recall | F1 | Support |
 | ----------------------- | --------- | ------ | ------ | --------- |
@@ -68,3 +68,5 @@ We're currently building classifiers for our [climate justice](https://climatepo
 [^2]: As a data science team, we always take the approach of building the simplest, lowest-cost system (or 'smallest model') that meets the performance requirement. More maintainable, steerable and cost-efficient keyword classifiers give us much more control over examining and correcting biases than finetuned BERT models would.
 
 [^3]: We store all of our concepts in a Wikibase instance we call our [Concept Store](https://climatepolicyradar.wikibase.cloud/wiki/Main_Page). Our Head of Data Science [Harrison](https://www.linkedin.com/in/harrison-pim/) wrote about why we need one on [Climate Policy Radar's blog](https://www.climatepolicyradar.org/latest/a-problem-with-language-why-we-need-a-climate-concept-store).
+
+[^4]: As we only show detected topics on our app via a filtering mechanism, precision dictates the experience of someone using those filters. An 80% precision means that 1 in 5 of the passages they see will be incorrect matches for the topic (false positives). We also want to show users as many of the mentions of the topic that are actually there as possible (high recall). Because of this, we think carefully about the trade-off between precision and recall for classifiers which have moveable thresholds.
