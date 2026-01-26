@@ -2,7 +2,7 @@
 
 *Kalyan Dutia*
 
-We've just reached a milestone in data science that it's worth writing publicly about. We've deployed our first classifier built through LLM distillation—a BERT model that matches GPT-5's performance while running affordably across our 30,000 documents.
+We recently deployed our first classifier built through LLM distillation—a BERT model that matches GPT-5's performance while running affordably across our 30,000 documents.
 
 If you're already familiar with our knowledge graph, feel free to [skip ahead to 'Finance flow: a high impact but challenging topic to classify'](#finance-flow-a-high-impact-but-challenging-topic-to-classify).
 
