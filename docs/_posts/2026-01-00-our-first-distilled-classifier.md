@@ -12,7 +12,9 @@ If you just want to see our tips and tricks from distilling a BERT model from a 
 
 We maintain a knowledge graph of climate-related topics that are valuable for our users to be able to find in documents. For each topic live in our tools, we build a classifier: a way of finding mentions of a topic in a passage of text. You see the results of these classifiers when you select the topic filters on our tools.
 
-<TODO: screenshot of topic filters goes here>
+![Screenshot of 'finance flow' filter selecting documents mentioning the concept.](assets/2026-01-00-finance-flows/cpr_finance_flow_screenshot.png)
+
+*Screenshot of 'finance flow' filter selecting documents mentioning the concept. You can view the documents mentioning 'finance flow' on the [Climate Litigation Database (cases)](https://www.climatecasechart.com/search?cfn=finance+flow), [Climate Change Laws of the World (laws, policies, UNFCCC submissions)](https://climate-laws.org/search?cfn=finance+flow) and the [Climate Project Explorer (MCF documents)](https://climateprojectexplorer.org/search?cfn=finance+flow).*
 
 We currently have 1,561 topics in the knowledge graph, 100 of which are powered by their own single-class classifier. All but one of these classifiers so far work without any machine learning[^2] – they compile all of the labels (the "main" label, alternative labels and [negative labels](https://climatepolicyradar.wikibase.cloud/wiki/Property:P9)) from a concept in our concept store into a regex pattern, and we use that regex pattern as the 'classifier'.
 
