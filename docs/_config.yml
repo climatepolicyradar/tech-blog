@@ -22,7 +22,7 @@ title: Climate Policy Radar tech blog
 email: support@climatepolicyradar.org
 description: >- # this means to ignore newlines until "baseurl:"
   We believe collaboration helps us achieve our shared mission, faster. Get in touch with us!
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "/tech-blog" # the subpath of your site, e.g. /blog
 url: "https://labs.climatepolicyradar.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: climatepolradar
 github_username: climatepolicyradar
