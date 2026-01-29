@@ -24,7 +24,7 @@ We believe in transparent, collaborative development. We talk about what we’re
 ## Creating a kind blogging culture 
 
 - If you worked with other people on this, are they recognised and acknowledged?
-- Have you run it by Henry and Tam for a quick sense check? 
+- Have you run it by Henry for a quick sense check? 
 - Are you inviting comment and collaboration? 
 - Is there a call to action?
 
@@ -32,7 +32,7 @@ We believe in transparent, collaborative development. We talk about what we’re
 
 # Publishing 
 
-- Markdown files stored in the `docs/_posts` directory are automatically published to the blog when merged to `gh-pages` branch. 
+- Markdown files stored in the `docs/_posts` directory are automatically published to the blog when merged to `main`. 
 - The ADR setting out the decision on publishing and hosting is here [TODO: add link]
 
 
