@@ -1,4 +1,9 @@
-# Building a GPT-5 quality classifier at BERT cost: Our first live distilled classifier
+---
+layout: post
+title:  "Building a GPT-5 quality classifier at BERT cost: Our first live distilled classifier"
+date:   2026-01-28 15:00:00 +0000
+categories: datascience
+--- 
 
 *Kalyan Dutia*
 
