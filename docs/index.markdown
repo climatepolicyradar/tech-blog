@@ -6,8 +6,8 @@ layout: home
 title: Home
 ---
 
-# Welcome to the Climate Policy Radar tech blog! 
+# Climate Policy Radar tech blog
 
 This is where our teams think in the open: sharing our work, discoveries, challenges, and opportunities.
 
-Our latest posts are below. Also checkout our [Github](https://github.com/climatepolicyradar), our [app](https://app.climatepolicyradar.org/), and our [public datasets](https://huggingface.co/ClimatePolicyRadar). 
+Our latest posts are below. Also check out our [Github](https://github.com/climatepolicyradar), our [app](https://app.climatepolicyradar.org/), and our [public datasets](https://huggingface.co/ClimatePolicyRadar).

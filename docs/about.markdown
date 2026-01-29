@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-# Welcome to the Climate Policy Radar tech blog! 
+# Climate Policy Radar tech blog
 
 This is where our teams think in the open: sharing our work, discoveries, challenges, and opportunities.
 
