@@ -1,8 +1,6 @@
 ---
 layout: post
 title:  "Building a GPT-5 quality classifier at BERT cost: Our first live distilled classifier"
-date:   2026-01-28 15:00:00 +0000
-categories: datascience
 --- 
 
 *Kalyan Dutia*
@@ -17,9 +15,7 @@ If you just want to see our tips and tricks from distilling a BERT model from a 
 
 We maintain a knowledge graph of climate-related topics that are valuable for our users to be able to find in documents. For each topic live in our tools, we build a classifier: a way of finding mentions of a topic in a passage of text. You see the results of these classifiers when you select the topic filters on our tools.
 
-![Screenshot of 'finance flow' filter selecting documents mentioning the concept.](assets/2026-01-00-finance-flows/cpr_finance_flow_screenshot.png)
-
-*Screenshot of 'finance flow' filter selecting documents mentioning the concept. You can view the documents mentioning 'finance flow' on the [Climate Litigation Database (cases)](https://www.climatecasechart.com/search?cfn=finance+flow), [Climate Change Laws of the World (laws, policies, UNFCCC submissions)](https://climate-laws.org/search?cfn=finance+flow) and the [Climate Project Explorer (MCF documents)](https://climateprojectexplorer.org/search?cfn=finance+flow).*
+{% include figure.html src="/assets/2026-01-28-finance-flows/cpr_finance_flow_screenshot.png" alt="Screenshot of 'finance flow' filter selecting documents mentioning the concept." caption="Screenshot of 'finance flow' filter selecting documents mentioning the concept. You can view the documents mentioning 'finance flow' on the <a href='https://www.climatecasechart.com/search?cfn=finance+flow'>Climate Litigation Database (cases)</a>, <a href='https://climate-laws.org/search?cfn=finance+flow'>Climate Change Laws of the World (laws, policies, UNFCCC submissions)</a> and the <a href='https://climateprojectexplorer.org/search?cfn=finance+flow'>Climate Project Explorer (MCF documents)</a>." %}
 
 We currently have 1,561 topics in the knowledge graph, 100 of which are powered by their own single-class classifier. All but one of these classifiers so far work without any machine learning[^2] – they compile all of the labels (the "main" label, alternative labels and [negative labels](https://climatepolicyradar.wikibase.cloud/wiki/Property:P9)) from a concept in our concept store into a regex pattern, and we use that regex pattern as the 'classifier'.
 
@@ -42,9 +38,7 @@ Internally, we've been adapting [active learning](https://en.wikipedia.org/wiki/
 
 We followed a relatively simple process to build our distilled classifier, whilst building out the ability to track experiments in Weights & Biases as we went. As shown in the diagram, the process neatly split into enabling each team to focus on their area of expertise. Folks from our policy team ([Anne](https://www.linkedin.com/in/ajsietsma/) and [Siôn](https://www.linkedin.com/in/sioneliswilliams/details/experience/)) applied their domain knowledge to iterate on annotation guidelines, produce a validation set, and create a classifier with an 85% F1 score. I ([Kalyan]) then produced 5.5k training examples using this LLM, and finetuned a BERT model with those.
 
-![BERT distillation process](assets/2026-01-00-finance-flows/distillation_diagram.png)
-
-*The process of creating an LLM classifier, and distilling it to a BERT model*
+{% include figure.html src="/assets/2026-01-28-finance-flows/distillation_diagram.png" alt="BERT distillation process" caption="The process of creating an LLM classifier, and distilling it to a BERT model" %}
 
 Despite being smaller by roughly four orders of magnitude smaller, the **BERT model was competitive with GPT-5** in F1 score. After choosing a threshold which optimised BERT's F1-score, we shifted the precision-recall tradeoff slightly in favour of greater precision[^4].
 
